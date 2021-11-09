@@ -7,7 +7,7 @@ std::string CaesarCipher::EncryptMessage(std::string InputString, int LetterOffs
 	std::ostringstream StringStream;
 	for (auto& each : InputString)
 	{
-		BeforeAlgorithmCount[each]++;
+		AfterAlgorithmCount[each]++;
 		LocalOffset = 0;
 		if (std::isdigit(each)) {
 			if (LetterOffset < 0) {
@@ -37,14 +37,14 @@ std::string CaesarCipher::EncryptMessage(std::string InputString, int LetterOffs
 }
 void CaesarCipher::PrintCountedVariables()
 {
-	std::cout << "Liczby po algorytmie: |";
+	std::cout << "Liczby : |";
 	for (int i = 48; i <= 57; i++)
 	{
 		char a = i;
 		std::cout << " " << a << " |";
 	}
 	std::cout << std::endl;
-	std::cout << "Ilosc  po algorytmie: |";
+	std::cout << "Ilosc  : |";
 	for (int i = 48; i <= 57; i++)
 	{
 		char a = i;
@@ -54,14 +54,14 @@ void CaesarCipher::PrintCountedVariables()
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	std::cout << "Litery po algorytmie: |";
+	std::cout << "Litery : |";
 	for (int i = 97; i <= 122; i++)
 	{
 		char a = i;
 		std::cout << " " << a << " |";
 	}
 	std::cout << std::endl;
-	std::cout << "Ilosc  po algorytmie: |";
+	std::cout << "Ilosc  : |";
 	for (int i = 97; i <= 122; i++)
 	{
 		char a = i;

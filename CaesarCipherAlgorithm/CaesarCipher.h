@@ -13,7 +13,6 @@ public:
 private:
 	std::string InputString;
 	int LetterOffset;
-	std::map<char, int> BeforeAlgorithmCount;
 	std::map<char, int> AfterAlgorithmCount;
 };
 
