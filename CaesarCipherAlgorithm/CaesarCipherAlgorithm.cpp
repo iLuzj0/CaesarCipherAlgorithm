@@ -1,6 +1,8 @@
 ﻿#include<iostream>
 #include<string>
 #include <stdlib.h>
+#include <algorithm>
+#include <array>
 #include <time.h>
 #include "CaesarCipher.h"
 
@@ -10,34 +12,35 @@ int main() {
 	srand(time(NULL));
 	iSecretLetter = rand() % 26 + 1;
 	iSecretNumber = rand() % 10 + 1;
-
-	std::string InputString;
-	int LetterOffset;
+	//std::string InputString;
+	//int LetterOffset;
 	CaesarCipher CaesarAlhorithm;
 
-	std::cout << "Standardowy alfabet i cyfry:" << std::endl;
-	CaesarAlhorithm.PrintAlphabet(0);
-	CaesarAlhorithm.PrintNumbers(0);
+	std::cout << "standardowy alfabet i cyfry:" << std::endl;
+	CaesarAlhorithm.PrintAlphabet(false);
+	CaesarAlhorithm.PrintNumbers(false);
 
 	std::cout << std::endl << "Losowo przesuniety alfabet i cyfry: " << std::endl;
-	CaesarAlhorithm.PrintAlphabet(iSecretLetter);
-	CaesarAlhorithm.PrintNumbers(iSecretNumber);
-	
-	std::cout << std::endl << "Podaj tekst do zaszyfrowania: ";
-	std::cin >> InputString;
-	std::cout  << "Podaj offset: ";
-	std::cin >> LetterOffset;
-	//system("cls");
+	CaesarAlhorithm.PrintAlphabet(true);
+	CaesarAlhorithm.PrintNumbers(true);
 
-	std::cout << "Tekst po zaszyfrowaniu: " << CaesarAlhorithm.EncryptMessage(InputString, LetterOffset) << std::endl;
+	CaesarAlhorithm.EncryptRandomAlphabet("abc", 27);
 
-	std::cout << std::endl << "Statystyki przed szyfrowaniem:" << std::endl;
+	//std::cout << std::endl << "Podaj tekst do zaszyfrowania: ";
+	//std::cin >> InputString;
+	//std::cout  << "Podaj offset: ";
+	//std::cin >> LetterOffset;
+	////system("cls");
 
-	CaesarAlhorithm.PrintCountedVariablesBeforeAlgorithm();
+	//std::cout << "Tekst po zaszyfrowaniu: " << CaesarAlhorithm.EncryptMessage(InputString, LetterOffset) << std::endl;
 
-	std::cout << std::endl << std::endl << "Statystyki po szyfrowaniu:" << std::endl;
+	//std::cout << std::endl << "Statystyki przed szyfrowaniem:" << std::endl;
 
-	CaesarAlhorithm.PrintCountedVariablesAfterAlgorithm();
+	//CaesarAlhorithm.PrintCountedVariablesBeforeAlgorithm();
+
+	//std::cout << std::endl << std::endl << "Statystyki po szyfrowaniu:" << std::endl;
+
+	//CaesarAlhorithm.PrintCountedVariablesAfterAlgorithm();
 	
 	return 0;
 }
