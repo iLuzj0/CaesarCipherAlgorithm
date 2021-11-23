@@ -17,6 +17,26 @@ void CaesarCipher::PrintAlphabet(int RandomOffset)
 		a = (a - 'a' + LocalOffset) % 26 + 'a';
 		std::cout << " " << a << " |";
 	}
+	std::cout << std::endl;
+}
+void CaesarCipher::PrintNumbers(int RandomOffset)
+{
+	int LocalOffset;
+	if (RandomOffset != 0)
+	{
+		NumberOffset = RandomOffset;
+	}
+	for (int i = 48; i <= 57; i++)
+	{
+		char a = i;
+		if (RandomOffset < 0) {
+			LocalOffset = 10 + (RandomOffset % 10);
+		}
+		else LocalOffset = RandomOffset;
+		a = (a - '0' + LocalOffset) % 10 + '0';
+		std::cout << " " << a << " |";
+	}
+	std::cout << std::endl;
 }
 
 
@@ -24,6 +44,7 @@ std::string CaesarCipher::EncryptMessage(std::string InputString, int LetterOffs
 {
 	int LocalOffset;
 	int LetterOffset_Alphabet = LetterOffset + AlphabetOffset;
+	int LetterOffset_Number = LetterOffset + NumberOffset;
 	std::string Output;
 	std::ostringstream StringStream;
 	for (auto& each : InputString)
@@ -32,9 +53,9 @@ std::string CaesarCipher::EncryptMessage(std::string InputString, int LetterOffs
 		LocalOffset = 0;
 		if (std::isdigit(each)) {
 			if (LetterOffset_Alphabet < 0) {
-				LocalOffset = 10 + (LetterOffset_Alphabet % 10);
+				LocalOffset = 10 + (LetterOffset_Number % 10);
 			}
-			else LocalOffset = LetterOffset_Alphabet;
+			else LocalOffset = LetterOffset_Number;
 			each = (each - '0' + LocalOffset) % 10 + '0';
 		}
 		else if (std::isupper(each)) {

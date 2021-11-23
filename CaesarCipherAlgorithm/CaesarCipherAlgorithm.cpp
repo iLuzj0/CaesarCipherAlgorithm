@@ -5,31 +5,29 @@
 #include "CaesarCipher.h"
 
 int main() {
-	int iSecret;
+	int iSecretLetter;
+	int iSecretNumber;
 	srand(time(NULL));
-	iSecret = rand() % 26 + 1;
+	iSecretLetter = rand() % 26 + 1;
+	iSecretNumber = rand() % 10 + 1;
 
 	std::string InputString;
 	int LetterOffset;
 	CaesarCipher CaesarAlhorithm;
 
-	std::cout << "Standardowy alfabet:" << std::endl;
+	std::cout << "Standardowy alfabet i cyfry:" << std::endl;
 	CaesarAlhorithm.PrintAlphabet(0);
+	CaesarAlhorithm.PrintNumbers(0);
 
-	std::cout << std::endl << "Losowo przesuniety alfabet o: " << iSecret << std::endl;
-	CaesarAlhorithm.PrintAlphabet(iSecret);
-
-	std::cout << std::endl;
-	std::cout << "Podaj tekst do zaszyfrowania: " << std::endl;
+	std::cout << std::endl << "Losowo przesuniety alfabet i cyfry: " << std::endl;
+	CaesarAlhorithm.PrintAlphabet(iSecretLetter);
+	CaesarAlhorithm.PrintNumbers(iSecretNumber);
+	
+	std::cout << std::endl << "Podaj tekst do zaszyfrowania: ";
 	std::cin >> InputString;
-	std::cout << "Podaj offset: ";
+	std::cout  << "Podaj offset: ";
 	std::cin >> LetterOffset;
 	//system("cls");
-
-
-	std::cout << "Test przed zaszyfrowaniem: " << InputString << std::endl;
-
-	std::cout << "Offset zaszyfrowania: " << LetterOffset << std::endl;
 
 	std::cout << "Tekst po zaszyfrowaniu: " << CaesarAlhorithm.EncryptMessage(InputString, LetterOffset) << std::endl;
 
