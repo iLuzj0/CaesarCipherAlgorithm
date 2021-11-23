@@ -19,13 +19,16 @@ int main() {
 	std::cout << "standardowy alfabet i cyfry:" << std::endl;
 	CaesarAlhorithm.PrintAlphabet(false);
 	CaesarAlhorithm.PrintNumbers(false);
-
+	
 	std::cout << std::endl << "Losowo przesuniety alfabet i cyfry: " << std::endl;
 	CaesarAlhorithm.PrintAlphabet(true);
 	CaesarAlhorithm.PrintNumbers(true);
 
-	CaesarAlhorithm.EncryptRandomAlphabet("abc", 27);
+	std::string EncryptedMessage = CaesarAlhorithm.EncryptRandomAlphabet("abc", -27);
 
+	std::cout << EncryptedMessage;
+	std::cout << std::endl;
+	CaesarAlhorithm.CountAlgorithUsage("abc",EncryptedMessage);
 	//std::cout << std::endl << "Podaj tekst do zaszyfrowania: ";
 	//std::cin >> InputString;
 	//std::cout  << "Podaj offset: ";

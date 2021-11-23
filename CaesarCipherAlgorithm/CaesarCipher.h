@@ -10,9 +10,8 @@ class CaesarCipher
 {
 public:
 	std::string EncryptMessage(std::string InputString, int LetterOffset);
-	void EncryptRandomAlphabet(std::string InputString, int Offset);
-	void PrintCountedVariablesAfterAlgorithm();
-	void PrintCountedVariablesBeforeAlgorithm();
+	std::string EncryptRandomAlphabet(std::string InputString, int Offset);
+	void CountAlgorithUsage(std::string ClearMessage, std::string Encrypted);
 	void PrintAlphabet(bool bShuffle);
 	void PrintNumbers(bool bShuffle);
 
@@ -23,6 +22,7 @@ private:
 
 	std::array<char, 26> Alphabet;
 	std::array<char, 10> Numbers;
+	std::map<char, int> AlgorithmCount;
 	std::map<char, int> AfterAlgorithmCount;
 	std::map<char, int> BeforeAlgorithmCount;
 };

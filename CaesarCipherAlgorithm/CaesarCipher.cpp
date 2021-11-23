@@ -39,7 +39,7 @@ void CaesarCipher::PrintNumbers(bool bShuffle)
 	std::cout << std::endl;
 }
 
-void CaesarCipher::EncryptRandomAlphabet(std::string InputString, int Offset)
+std::string CaesarCipher::EncryptRandomAlphabet(std::string InputString, int Offset)
 {
 	std::ostringstream StringStream;
 	for (auto LetterInString : InputString)
@@ -58,7 +58,7 @@ void CaesarCipher::EncryptRandomAlphabet(std::string InputString, int Offset)
 		}
 		
 	}
-	std::cout << StringStream.str();
+	return StringStream.str();
 }
 
 std::string CaesarCipher::EncryptMessage(std::string InputString, int LetterOffset)
@@ -90,70 +90,85 @@ std::string CaesarCipher::EncryptMessage(std::string InputString, int LetterOffs
 	return Output = StringStream.str();
 }
 
-void CaesarCipher::PrintCountedVariablesBeforeAlgorithm()
+void CaesarCipher::CountAlgorithUsage(std::string ClearMessage, std::string Encrypted)
 {
-	std::cout << "Liczby : |";
+	std::cout << "Litery: " << std::endl;
+	
+	for(int i = 97; i <= 122; i++)
+	{
+		char a = i;
+		if(islower(a))
+		std::cout << " " << a << " |";
+	}
+	std::cout << std::endl;
+	for (int i = 97; i <= 122; i++)
+	{
+		char a = i;
+		for (auto Letter : ClearMessage)
+		{
+			if(a == Letter)
+			AlgorithmCount[a]++;
+		}
+		if (islower(a))
+		std::cout << " " << AlgorithmCount[a] << " |";
+	}
+
+	std::cout << std::endl << "Cyfry: " << std::endl;
+
 	for (int i = 48; i <= 57; i++)
 	{
 		char a = i;
 		std::cout << " " << a << " |";
 	}
 	std::cout << std::endl;
-	std::cout << "Ilosc  : |";
 	for (int i = 48; i <= 57; i++)
 	{
 		char a = i;
-		std::cout << " " << BeforeAlgorithmCount[a] << " |";
+		for (auto Letter : ClearMessage)
+		{
+			if (a == Letter)
+				AlgorithmCount[a]++;
+		}
+		std::cout << " " << AlgorithmCount[a] << " |";
 	}
 
-	std::cout << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "Litery : |";
+	std::cout << std::endl << "Litery zaszyfrowane: " << std::endl;
+	AlgorithmCount.clear();
 	for (int i = 97; i <= 122; i++)
+	{
+		char a = i;
+		if (islower(a))
+			std::cout << " " << a << " |";
+	}
+	std::cout << std::endl;
+	for (int i = 97; i <= 122; i++)
+	{
+		char a = i;
+		for (auto Letter : Encrypted)
+		{
+			if (a == Letter)
+				AlgorithmCount[a]++;
+		}
+		if (islower(a))
+			std::cout << " " << AlgorithmCount[a] << " |";
+	}
+
+	std::cout << std::endl << "Cyfry zaszyfrowane: " << std::endl;
+
+	for (int i = 48; i <= 57; i++)
 	{
 		char a = i;
 		std::cout << " " << a << " |";
 	}
 	std::cout << std::endl;
-	std::cout << "Ilosc  : |";
-	for (int i = 97; i <= 122; i++)
-	{
-		char a = i;
-		std::cout << " " << BeforeAlgorithmCount[a] << " |";
-	}
-}
-
-void CaesarCipher::PrintCountedVariablesAfterAlgorithm()
-{
-	std::cout << "Liczby : |";
 	for (int i = 48; i <= 57; i++)
 	{
 		char a = i;
-		std::cout << " " << a << " |";
-	}
-	std::cout << std::endl;
-	std::cout << "Ilosc  : |";
-	for (int i = 48; i <= 57; i++)
-	{
-		char a = i;
-		std::cout << " " << AfterAlgorithmCount[a] << " |";
-	}
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "Litery : |";
-	for (int i = 97; i <= 122; i++)
-	{
-		char a = i;
-		std::cout << " " << a << " |";
-	}
-	std::cout << std::endl;
-	std::cout << "Ilosc  : |";
-	for (int i = 97; i <= 122; i++)
-	{
-		char a = i;
-		std::cout << " " << AfterAlgorithmCount[a] << " |";
+		for (auto Letter : Encrypted)
+		{
+			if (a == Letter)
+				AlgorithmCount[a]++;
+		}
+		std::cout << " " << AlgorithmCount[a] << " |";
 	}
 }
