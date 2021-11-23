@@ -41,35 +41,35 @@ void CaesarCipher::PrintNumbers(bool bShuffle)
 
 std::string CaesarCipher::EncryptRandomAlphabet(std::string InputString, int Offset)
 {
-	std::ostringstream StringStream;
+	std::ostringstream LetterStream;
+	std::ostringstream NumberStream;
+	int Counter = 0;
+	int CounterNum = 0;
 	for (auto LetterInString : InputString)
 	{
-		int Counter = 0;
+		Counter = 0;
 		for (auto Letter : Alphabet)
 		{
 			if(Letter == LetterInString)
 			{
-				//std::cout << Counter << std::endl;
-
-				StringStream << Alphabet[Counter + (Offset % 26)];
-				//std::cout << Alphabet.;
-			}
-			Counter++;
-		}
-		Counter = 0;
-		for (auto Number : Numbers)
-		{
-			if (Number == LetterInString)
-			{
-				//std::cout << Counter << std::endl;
-
-				StringStream << Numbers[Counter + (Offset % 10)];
-				//std::cout << Alphabet.;
+				LetterStream << Alphabet[(Counter + (Offset % 26))%26];
 			}
 			Counter++;
 		}
 	}
-	return StringStream.str();
+	for (auto input_string : InputString)
+	{
+		for (auto number : Numbers)
+		{
+			if(number == input_string)
+			{
+				NumberStream << Numbers[(CounterNum + (Offset % 10))%10];
+			}
+			CounterNum++;
+		}
+	}
+
+	return LetterStream.str().append(NumberStream.str());
 }
 
 std::string CaesarCipher::EncryptMessage(std::string InputString, int LetterOffset)
@@ -132,9 +132,9 @@ void CaesarCipher::CountAlgorithUsage(std::string ClearMessage, std::string Encr
 		std::cout << " " << a << " |";
 	}
 	std::cout << std::endl;
-	for (int i = 48; i <= 57; i++)
+	for (int j = 48; j <= 57; j++)
 	{
-		char a = i;
+		char a = j;
 		for (auto Letter : ClearMessage)
 		{
 			if (a == Letter)
@@ -145,16 +145,16 @@ void CaesarCipher::CountAlgorithUsage(std::string ClearMessage, std::string Encr
 
 	std::cout << std::endl << "Litery zaszyfrowane: " << std::endl;
 	AlgorithmCount.clear();
-	for (int i = 97; i <= 122; i++)
+	for (int z = 97; z <= 122; z++)
 	{
-		char a = i;
+		char a = z;
 		if (islower(a))
 			std::cout << " " << a << " |";
 	}
 	std::cout << std::endl;
-	for (int i = 97; i <= 122; i++)
+	for (int y = 97; y <= 122; y++)
 	{
-		char a = i;
+		char a = y;
 		for (auto Letter : Encrypted)
 		{
 			if (a == Letter)
@@ -166,15 +166,15 @@ void CaesarCipher::CountAlgorithUsage(std::string ClearMessage, std::string Encr
 
 	std::cout << std::endl << "Cyfry zaszyfrowane: " << std::endl;
 
-	for (int i = 48; i <= 57; i++)
+	for (int o = 48; o <= 57; o++)
 	{
-		char a = i;
+		char a = o;
 		std::cout << " " << a << " |";
 	}
 	std::cout << std::endl;
-	for (int i = 48; i <= 57; i++)
+	for (int m = 48; m <= 57; m++)
 	{
-		char a = i;
+		char a = m;
 		for (auto Letter : Encrypted)
 		{
 			if (a == Letter)
