@@ -56,7 +56,18 @@ std::string CaesarCipher::EncryptRandomAlphabet(std::string InputString, int Off
 			}
 			Counter++;
 		}
-		
+		Counter = 0;
+		for (auto Number : Numbers)
+		{
+			if (Number == LetterInString)
+			{
+				//std::cout << Counter << std::endl;
+
+				StringStream << Numbers[Counter + (Offset % 10)];
+				//std::cout << Alphabet.;
+			}
+			Counter++;
+		}
 	}
 	return StringStream.str();
 }

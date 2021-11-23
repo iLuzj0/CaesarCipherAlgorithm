@@ -24,7 +24,7 @@ int main() {
 	CaesarAlhorithm.PrintAlphabet(true);
 	CaesarAlhorithm.PrintNumbers(true);
 
-	std::string EncryptedMessage = CaesarAlhorithm.EncryptRandomAlphabet("abc", -27);
+	std::string EncryptedMessage = CaesarAlhorithm.EncryptRandomAlphabet("abc012", 2);
 
 	std::cout << EncryptedMessage;
 	std::cout << std::endl;
