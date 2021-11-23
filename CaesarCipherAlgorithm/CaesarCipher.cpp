@@ -1,8 +1,29 @@
 #include "CaesarCipher.h"
 
+void CaesarCipher::PrintAlphabet(int RandomOffset)
+{
+	int LocalOffset;
+	if (RandomOffset != 0)
+	{
+		AlphabetOffset = RandomOffset;
+	}
+	for(int i = 97; i<=122; i++)
+	{
+		char a = i;
+		if (RandomOffset < 0) {
+			LocalOffset = 26 + (RandomOffset % 26);
+		}
+		else LocalOffset = RandomOffset;
+		a = (a - 'a' + LocalOffset) % 26 + 'a';
+		std::cout << " " << a << " |";
+	}
+}
+
+
 std::string CaesarCipher::EncryptMessage(std::string InputString, int LetterOffset)
 {
 	int LocalOffset;
+	int LetterOffset_Alphabet = LetterOffset + AlphabetOffset;
 	std::string Output;
 	std::ostringstream StringStream;
 	for (auto& each : InputString)
@@ -10,24 +31,24 @@ std::string CaesarCipher::EncryptMessage(std::string InputString, int LetterOffs
 		BeforeAlgorithmCount[each]++;
 		LocalOffset = 0;
 		if (std::isdigit(each)) {
-			if (LetterOffset < 0) {
-				LocalOffset = 10 + (LetterOffset % 10);
+			if (LetterOffset_Alphabet < 0) {
+				LocalOffset = 10 + (LetterOffset_Alphabet % 10);
 			}
-			else LocalOffset = LetterOffset;
+			else LocalOffset = LetterOffset_Alphabet;
 			each = (each - '0' + LocalOffset) % 10 + '0';
 		}
 		else if (std::isupper(each)) {
-			if (LetterOffset < 0) {
-				LocalOffset = 26 + (LetterOffset % 26);
+			if (LetterOffset_Alphabet < 0) {
+				LocalOffset = 26 + (LetterOffset_Alphabet % 26);
 			}
-			else LocalOffset = LetterOffset;
+			else LocalOffset = LetterOffset_Alphabet;
 			each = (each - 'A' + LocalOffset) % 26 + 'A';
 		}
 		else if (std::islower(each)) {
-			if (LetterOffset < 0) {
-				LocalOffset = 26 + (LetterOffset % 26);
+			if (LetterOffset_Alphabet < 0) {
+				LocalOffset = 26 + (LetterOffset_Alphabet % 26);
 			}
-			else LocalOffset = LetterOffset;
+			else LocalOffset = LetterOffset_Alphabet;
 			each = (each - 'a' + LocalOffset) % 26 + 'a';
 		}
 		AfterAlgorithmCount[each]++;
