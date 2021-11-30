@@ -8,7 +8,7 @@
 
 int main() {
 	std::string InputString;
-	int LetterOffset;
+	int LetterOffset = 0;
 
 	CaesarCipher CaesarAlhorithm;
 
@@ -22,8 +22,6 @@ int main() {
 	
 	std::cout << std::endl << "Podaj tekst do zaszyfrowania: ";
 	std::cin >> InputString;
-	std::cout  << "Podaj offset: ";
-	std::cin >> LetterOffset;
 
 	std::string EncryptedMessage = CaesarAlhorithm.EncryptRandomAlphabet(InputString, LetterOffset);
 

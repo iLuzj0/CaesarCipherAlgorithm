@@ -22,6 +22,8 @@ private:
 
 	std::array<char, 26> Alphabet;
 	std::array<char, 10> Numbers;
+	std::array<char, 26> RandomAlphabet;
+	std::array<char, 10> RandomNumbers;
 	std::map<char, int> AlgorithmCount;
 	std::map<char, int> AfterAlgorithmCount;
 	std::map<char, int> BeforeAlgorithmCount;

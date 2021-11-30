@@ -57,7 +57,9 @@ std::string CaesarCipher::EncryptRandomAlphabet(std::string InputString, int Off
 		{
 			if(Letter == LetterInString)
 			{
-				LetterStream << Alphabet[(Counter + (Offset % 26))%26];
+				int i = Letter;
+
+				LetterStream << Alphabet[i-97];
 			}
 			Counter++;
 		}
@@ -68,7 +70,8 @@ std::string CaesarCipher::EncryptRandomAlphabet(std::string InputString, int Off
 		{
 			if(number == input_string)
 			{
-				NumberStream << Numbers[(CounterNum + (Offset % 10))%10];
+				int j = number;
+				NumberStream << Numbers[j - 48];
 			}
 			CounterNum++;
 		}
