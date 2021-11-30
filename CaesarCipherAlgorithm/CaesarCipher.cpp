@@ -1,5 +1,9 @@
 #include "CaesarCipher.h"
-
+struct RNG {
+	int operator() (int n) {
+		return std::rand() / (1.0 + RAND_MAX) * n;
+	}
+};
 void CaesarCipher::PrintAlphabet(bool bShuffle)
 {
 	int i = 97;
@@ -11,6 +15,7 @@ void CaesarCipher::PrintAlphabet(bool bShuffle)
 	}
 	if (bShuffle)
 	{
+		srand(time(NULL));
 		std::random_shuffle(Alphabet.begin(), Alphabet.end());
 		for (auto Letter : Alphabet)
 		{

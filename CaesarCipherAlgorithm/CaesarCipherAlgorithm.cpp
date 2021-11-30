@@ -27,7 +27,7 @@ int main() {
 
 	std::string EncryptedMessage = CaesarAlhorithm.EncryptRandomAlphabet(InputString, LetterOffset);
 
-	std::cout << EncryptedMessage;
+	std::cout << "Wiadomosc po zaszyfrowaniu: " << EncryptedMessage << std::endl;
 	std::cout << std::endl;
 	CaesarAlhorithm.CountAlgorithUsage(InputString,EncryptedMessage);
 	
